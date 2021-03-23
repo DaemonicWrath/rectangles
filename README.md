@@ -11,12 +11,16 @@ This is a implementation of multiple rectangle algorithms for a coding assignmen
 - Adjacency
   - Determine if two rectangles share a side either fully, partial or sub-line
 
+## Running
+
+This project acts a library and does not have anything to run. instead to check the library run `npm test`
+
 ## Dependencies
 
 This project was generated using [typescript-starter](https://github.com/bitjson/typescript-starter) and trimmed down
 
 - yarn 2
-  - this project uses the newest version of yarn berry.. for this project i have disabled plug n play npm should work normally
+  - this project uses the newest version of yarn berry.. for this project i have disabled plug n play and not included the yarn cache folder. npm should work normally
 - Typescript
   - used to help catch logic errors
 - ava
