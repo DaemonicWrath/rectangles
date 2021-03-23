@@ -10,14 +10,29 @@ export const equal = (r1: Rect, r2: Rect): boolean =>
   r1[1][0] === r2[1][0] &&
   r1[1][1] === r2[1][1];
 
-// slightly inefficient to call flipPoints for each call but provides convenience
+/**
+ *  returns the top line of a given Rect
+ */
 export const top = (r1: Rect): line.Line => [flipPoints(r1)[0], r1[1]];
+
+/**
+ *  returns the bottom line of a given Rect
+ */
 export const bottom = (r1: Rect): line.Line => [r1[1], flipPoints(r1)[1]];
+
+/**
+ *  returns the left line of a given Rect
+ */
 export const left = (r1: Rect): line.Line => [r1[0], flipPoints(r1)[0]];
+
+/**
+ *  returns the right line of a given Rect
+ */
 export const right = (r1: Rect): line.Line => [r1[1], flipPoints(r1)[1]];
 
-// returns a new rectangle that has the points of the opposite corners of a existing rectangle
-// TODO: Example
+/**
+ * returns a new rectangle where the y component of each point is swapped
+ */
 export const flipPoints = (r1: Rect): Rect => {
   return [
     [r1[0][0], r1[1][1]],
@@ -25,8 +40,10 @@ export const flipPoints = (r1: Rect): Rect => {
   ];
 };
 
-// Generates a new rectangle that is the intersection of r1 and r2.
-// if r2 is fully within r1 the output will be a rectangle with the same points as r2
+/**
+ * Generates a new rectangle that is the intersection of r1 and r2.
+ * if r2 is fully within r1 the output will be a rectangle with the same points as r2
+ */
 export const getIntersectingRect = (r1: Rect, r2: Rect): Rect | undefined => {
   // generate
   const p1: Point = [
@@ -45,6 +62,9 @@ export const getIntersectingRect = (r1: Rect, r2: Rect): Rect | undefined => {
   return [p1, p2];
 };
 
+/**
+ * Returns a array of points where two rectangles intersect
+ */
 export const getIntersectingPoints = (r1: Rect, r2: Rect): readonly Point[] => {
   const intersectingRect = getIntersectingRect(r1, r2);
 
@@ -80,7 +100,9 @@ export const getIntersectingPoints = (r1: Rect, r2: Rect): readonly Point[] => {
   });
 };
 
-// Checks if r1 fully contains r2
+/**
+ * Checks wither Rect r2 is fully within r1
+ */
 export const doesContain = (r1: Rect, r2: Rect): boolean => {
   const intersectingRect = getIntersectingRect(r1, r2);
 
@@ -93,6 +115,9 @@ export const doesContain = (r1: Rect, r2: Rect): boolean => {
   return equal(intersectingRect, r2);
 };
 
+/**
+ * Checks if two rectangles share a side either fully, partial, or sub-line
+ */
 export const isAdjacent = (r1: Rect, r2: Rect): boolean => {
   const intersectingRect = getIntersectingRect(r1, r2);
 
